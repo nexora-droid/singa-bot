@@ -11,8 +11,8 @@ import os
 from dotenv import load_dotenv
 
 
-SLACK_BOT_TOKEN = os.environ('SLACK_BOT_TOKEN')
-SIGNING_SECRET = os.environ('SIGNIN_SECRET')
+SLACK_BOT_TOKEN = os.environ['SLACK_BOT_TOKEN']
+SIGNING_SECRET = os.environ['SIGNING_SECRET']
 CHANNEL_ID = "#singapore-hangout" 
 
 
@@ -97,6 +97,13 @@ def schedule_job():
 
 schedule_job()
 
+def send_startup_ping():
+    client.chat.postMessage(
+        channel=CHANNEL_ID,
+        text="Ping? Pong! Singa is back.... now will someone please send over the PFP for Singa..."
+    )
+
+send_startup_ping()
 
 @flask_app.route("/slack/events", methods=["POST"])
 def slack_events():
