@@ -28,7 +28,7 @@ handler = SlackRequestHandler(app)
 
 
 def send_anthem_message():
-    client.chat.postMessage(
+    client.chat_postMessage(
         channel=CHANNEL_ID,
         text="Please rise for the National Anthem.",
         blocks=[
@@ -64,7 +64,7 @@ def handle_pledge(ack, body):
     channel_id = body["channel"]["id"]
     ts = body["message"]["ts"]
 
-    client.chat.update(
+    client.chat_update(
         channel=channel_id,
         ts=ts,
         text="Please rise for the National Anthem.",
@@ -97,14 +97,6 @@ def schedule_job():
 
 schedule_job()
 
-def send_startup_ping():
-    client.chat.postMessage(
-        channel=CHANNEL_ID,
-        text="Ping? Pong! Singa is back.... now will someone please send over the PFP for Singa..."
-    )
-
-send_startup_ping()
-
 @flask_app.route("/slack/events", methods=["POST"])
 def slack_events():
     return handler.handle(request)
@@ -115,5 +107,13 @@ def home():
 
 
 if __name__ == "__main__":
+    try:
+        client.chat_postMessage(
+            channel=CHANNEL_ID,
+            text="Ping? Pong! Singa is back.... now will someone please send over the PFP for Singa..."
+        )
+    except Exception as e:
+        print("Failed to send startup ping:", e)
+
     port = int(os.environ.get("PORT", 3000))
     flask_app.run(host="0.0.0.0", port=port)
