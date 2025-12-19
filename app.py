@@ -122,15 +122,16 @@ def slack_commands():
 
     return "", 200
 
-
+startup_ping_sent = True
 if __name__ == "__main__":
-    try:
-        client.chat_postMessage(
-            channel=CHANNEL_ID,
-            text="Ping? Pong! Singa is back.... now will someone please send over the PFP for Singa..."
-        )
-    except Exception as e:
-        print("Failed to send startup ping:", e)
+    if not startup_ping_sent:
+        try:
+            client.chat_postMessage(
+                channel=CHANNEL_ID,
+                text="Ping? Pong! Singa is back.... now will someone please send over the PFP for Singa..."
+            )
+        except Exception as e:
+            print("Failed to send startup ping:", e)
 
     port = int(os.environ.get("PORT", 3000))
     flask_app.run(host="0.0.0.0", port=port)
