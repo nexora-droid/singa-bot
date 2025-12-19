@@ -11,8 +11,8 @@ import os
 from dotenv import load_dotenv
 
 
-SLACK_BOT_TOKEN = os.getenv('SLACK_BOT_TOKEN')
-SIGNING_SECRET = os.getenv('SIGNIN_SECRET')
+SLACK_BOT_TOKEN = os.environ('SLACK_BOT_TOKEN')
+SIGNING_SECRET = os.environ('SIGNIN_SECRET')
 CHANNEL_ID = "#singapore-hangout" 
 
 
