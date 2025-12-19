@@ -105,6 +105,23 @@ def slack_events():
 def home():
     return "Slack bot is running"
 
+@flask_app.route("/slack/commands", methods=["POST"])
+def slack_commands():
+    data = request.form
+    user_id = data.get("user_id")
+    command = data.get("command")
+    text = data.get("text")
+    channel_id = data.get("channel_id")
+
+    if command == "/singapore":
+        client.chat_postMessage(
+            channel=CHANNEL_ID,
+            text="Singapore, officially the Republic of Singapore, is an island country and city-state in Southeast Asia. Its territory comprises one main island, 63 satellite islands and islets, and one outlying islet. The country is about one degree of latitude north of the equator, off the southern tip of the Malay Peninsula, bordering the Strait of Malacca to the west, the Singapore Strait to the south along with the Riau Islands in Indonesia, the South China Sea to the east and the Straits of Johor along with the State of Johor in Malaysia to the north."
+        )
+        return "", 200
+
+    return "", 200
+
 
 if __name__ == "__main__":
     try:
