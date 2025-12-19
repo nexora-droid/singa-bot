@@ -121,7 +121,9 @@ def slack_commands():
         return "", 200
 
     return "", 200
-
+@flask_app.route("/health")
+def health_check():
+    return "OK", 200
 startup_ping_sent = True
 if __name__ == "__main__":
     if not startup_ping_sent:
