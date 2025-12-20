@@ -79,14 +79,17 @@ def handle_pledge(ack, body):
         ]
     )
 
+@flask_app.route("/test/anthem")
+def test_anthem():
+    send_anthem_message()
 
     client.chat_postMessage(
-        channel=channel_id,
+        channel=CHANNEL_ID,
         text=(
             "We, the citizens of Singapore, pledge ourselves as one united people, "
             "regardless of race, language or religion, to build a democratic society "
             "based on justice and equality so as to achieve happiness, prosperity "
-            "and progress for our nation."
+            "and progress f or our nation."
         )
     )
 
