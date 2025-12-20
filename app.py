@@ -80,7 +80,7 @@ def handle_pledge(ack, body):
     )
 
 
-    client.chat.postMessage(
+    client.chat_postMessage(
         channel=channel_id,
         text=(
             "We, the citizens of Singapore, pledge ourselves as one united people, "
@@ -92,7 +92,7 @@ def handle_pledge(ack, body):
 
 def schedule_job():
     scheduler = BackgroundScheduler(timezone=pytz.timezone("Asia/Singapore"))
-    scheduler.add_job(send_anthem_message, "cron", hour=6, minute=0)
+    scheduler.add_job(send_anthem_message, "cron", hour=7, minute=30)
     scheduler.start()
 
 schedule_job()
