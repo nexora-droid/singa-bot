@@ -82,10 +82,7 @@ def handle_pledge(ack, body):
         channel=channel_id,
         text=(
             "*🇸🇬 The National Pledge*\n\n"
-            "We, the citizens of Singapore, pledge ourselves as one united people,\n"
-            "regardless of race, language or religion, to build a democratic society,\n"
-            "based on justice and equality so as to achieve happiness, prosperity,\n"
-            "and progress for our nation."
+            "We, the citizens of Singapore, pledge ourselves as one united people, regardless of race, language or religion, to build a democratic society based on justice and equality so as to achieve happiness, prosperity and progress for our nation."
         )
     )
 
