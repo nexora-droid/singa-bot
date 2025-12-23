@@ -86,9 +86,6 @@ def handle_pledge(ack, body):
         )
     )
 
-@flask_app.route("/test/anthem")
-def test_anthem():
-    send_anthem_message()
 
 def schedule_job():
     scheduler = BackgroundScheduler(timezone=pytz.timezone("Asia/Singapore"))
