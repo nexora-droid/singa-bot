@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 
 SLACK_BOT_TOKEN = os.environ['SLACK_BOT_TOKEN']
 SIGNING_SECRET = os.environ['SIGNING_SECRET']
-CHANNEL_ID = "#C04M6780C2H" 
+CHANNEL_ID = "C04M6780C2H" 
 
 
 app = App(
