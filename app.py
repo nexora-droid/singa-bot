@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 
 SLACK_BOT_TOKEN = os.environ['SLACK_BOT_TOKEN']
 SIGNING_SECRET = os.environ['SIGNING_SECRET']
-CHANNEL_ID = "#singapore-hangout" 
+CHANNEL_ID = "#C04M6780C2H" 
 
 
 app = App(
@@ -81,6 +81,7 @@ def handle_pledge(ack, body):
     client.chat_postMessage(
         channel=channel_id,
         text=(
+            "*TEST MESSAGE *\n\n"
             "*🇸🇬 The National Pledge*\n\n"
             "We, the citizens of Singapore, pledge ourselves as one united people, regardless of race, language or religion, to build a democratic society based on justice and equality so as to achieve happiness, prosperity and progress for our nation."
         )
@@ -89,7 +90,7 @@ def handle_pledge(ack, body):
 
 def schedule_job():
     scheduler = BackgroundScheduler(timezone=pytz.timezone("Asia/Singapore"))
-    scheduler.add_job(send_anthem_message, "cron", hour=7, minute=30)
+    scheduler.add_job(send_anthem_message, "cron", hour=22, minute=30)
     scheduler.start()
 
 schedule_job()
@@ -121,7 +122,7 @@ def slack_commands():
 @flask_app.route("/health")
 def health_check():
     return "OK", 200
-startup_ping_sent = True
+startup_ping_sent = False
 if __name__ == "__main__":
     if not startup_ping_sent:
         try:
