@@ -81,7 +81,6 @@ def handle_pledge(ack, body):
     client.chat_postMessage(
         channel=channel_id,
         text=(
-            "*TEST MESSAGE *\n\n"
             "*🇸🇬 The National Pledge*\n\n"
             "We, the citizens of Singapore, pledge ourselves as one united people, regardless of race, language or religion, to build a democratic society based on justice and equality so as to achieve happiness, prosperity and progress for our nation."
         )
