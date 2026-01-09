@@ -89,7 +89,7 @@ def handle_pledge(ack, body):
 
 def schedule_job():
     scheduler = BackgroundScheduler(timezone=pytz.timezone("Asia/Singapore"))
-    scheduler.add_job(send_anthem_message, "cron", hour=22, minute=30)
+    scheduler.add_job(send_anthem_message, "cron", hour=7, minute=30)
     scheduler.start()
 
 schedule_job()
